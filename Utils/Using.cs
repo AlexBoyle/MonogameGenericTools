@@ -1,0 +1,14 @@
+﻿global using Microsoft.Xna.Framework;
+global using Microsoft.Xna.Framework.Graphics;
+global using Microsoft.Xna.Framework.Input;
+global using System;
+global using System.Collections;
+global using System.Collections.Generic;
+global using System.Diagnostics;
+global using System.Linq;
+global using Utils.Core.GlobalUtilities;
+global using Utils.Core.Objects;
+global using Utils.Core.Objects.AssetPooling;
+global using Utils.Core.Scene;
+global using Utils.Core.UIElements;
+global using Utils.Core.YamlSettingsReader;

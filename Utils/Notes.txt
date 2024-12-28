@@ -1,0 +1,91 @@
+﻿ToDo
+	Water and Gas physics
+
+World Gen
+ - pass in rules
+ - biomes?
+
+
+
+
+
+
+Gameplay Ideas:
+	Oxygin is included, the "outside" keeps a constand pressure
+	the game starts with access to the surface
+	Trader or trade routes?
+	unstable portal that lets you pluck thing from "timespace" (dont worry ppl who you gather are frozen in time)
+	starting area is remains of lab
+	story: partical accelorator broke time, you are in the future (lab is buriieid) you have to make your way to your home timeline?
+	decide if the player is a character, or just the omnipitant base builder, or both (you play in and controll the colony)
+		if both idea: you start haveing to be at a console in the cernter of the base but can then make a tablet
+
+	Mix of ONI, Rimworld, and factorio is the direction
+
+
+
+
+
+
+Names?
+ - The Time After : not very catchy or has a cool acrynim
+
+
+
+
+
+
+ toDo: 
+	consolitate all the tile maps into one
+	each tile will be a struct that has all the diffrent tial types
+		this will cut down on memory and also consolidate logic
+		bootstrap it so we can still initally use the masters
+
+
+
+
+
+
+If the Gameplay is going to be Player + npcs that do bidding
+ - Building: assignemntBoard (later replaced with hand held device?)
+	- set prioritys
+	- Place blueprits
+	- free cam
+ - Crafting
+	- Can be done in inventory (factorio?)
+	- Can be done by npc at workbench
+		- Can only craft one item type, can be upgraded
+		- limit craft (craft up to x)
+- Job Types
+	- Dig
+		- dig out resources
+	- Build
+		- Build buildings
+	- Work
+		- work a building
+	- Haul
+		- Move mats
+- NPCs
+	- Can not craft (only at crafting stations)
+	- Need to sleep
+	- need to breath (if gas mechanic is working)
+	- need to eat
+	- Can be generated from the "warp"
+- Player
+	- does not need to sleep (lore?)
+	- can craft factorio style
+
+
+	- To think about
+		- Trading
+
+
+
+
+
+
+
+
+
+
+https://www.reddit.com/r/Minecraft/comments/mu4z1b/i_redrew_the_raw_ore_block_textures_for_my/#lightbox
