@@ -1,6 +1,6 @@
 ﻿namespace Utils.Core.Scene {
 	using Microsoft.Xna.Framework;
-	using Utils.Core.Utilities;
+	using Utils.Core.GlobalUtilities;
 	using System;
 	using System.Collections.Generic;
 

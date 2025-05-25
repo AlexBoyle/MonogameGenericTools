@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Utils.Core.Objects.AssetPooling {
+﻿namespace Utils.Core.Objects.AssetPooling {
 	public class Pool<T> where T : Poolable, new() {
 		private Stack<T> inactive = new Stack<T>();
 		private Dictionary<int, T> active = new Dictionary<int, T>();

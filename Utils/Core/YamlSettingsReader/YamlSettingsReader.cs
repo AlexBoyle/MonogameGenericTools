@@ -1,7 +1,7 @@
 ﻿namespace Utils.Core.YamlSettingsReader {
+	using Utils.Core.GlobalUtilities;
 	using System;
 	using System.Collections.Generic;
-	using Utils.Core.GlobalUtilities;
 
 	public class YamlSettingsReader {
 		public string fileName { get; protected set; }
@@ -48,6 +48,5 @@
 		public T get(string key) {
 			return settings[key.ToLower()];
 		}
-
 	}
 }

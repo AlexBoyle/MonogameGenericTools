@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using YamlDotNet.Serialization;
 
 namespace Utils.Core.YamlSettingsReader {
 	public static class FileUtility {
 
 		public static Dictionary<object, object> readYamlFile(string fileName) {
-			string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-			if (string.Compare(path.Substring(path.Length - 1, 1), "\\") != 0) {
+			string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+			if (String.Compare(path.Substring(path.Length - 1, 1), "\\") != 0) {
 				path = path + "\\";
 			}
 			StreamReader streamReader = new StreamReader(path + "Content\\" + fileName);
 			string yaml = streamReader.ReadToEnd();
 			var deserializer = new DeserializerBuilder().Build();
 			streamReader.Close();
-			return (Dictionary<object, object>)deserializer.Deserialize<object>(yaml);
+			return ((Dictionary<object, object>)(deserializer.Deserialize<object>(yaml)));
 		}
 
 		public static bool writeYamlFile(object o) {
@@ -31,7 +29,7 @@ namespace Utils.Core.YamlSettingsReader {
 			}
 			return true;
 		}
-		public static string[] readTextFile(string fileName) {
+		public static String[] readTextFile(string fileName) {
 			string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 			using (var sr = new StreamReader(Path.Combine(docPath, fileName + ".txt"))) {
 				// Read the stream as a string, and write the string to the console.

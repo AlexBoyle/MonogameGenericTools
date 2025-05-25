@@ -31,17 +31,17 @@
 			middle.color = Color.RosyBrown;
 			right.color = Color.SaddleBrown;
 
-			UIElement loadGameButton = ((Button)((new Button("Load Game"))
+			UIElement loadGameButton = ((SimpleButton)((new SimpleButton("Load Game"))
 				.setPosition(5, 5, Unit.PX)
 				.setDimentions(256, 64, Unit.PX)))
 				.setCallback(loadGame);
 
-			UIElement newGameButton = ((Button)((new Button("New Game"))
+			UIElement newGameButton = ((SimpleButton)((new SimpleButton("New Game"))
 				.setPosition(5, 5, Unit.PX)
 				.setDimentions(256, 64, Unit.PX)))
 				.setCallback(newGame);
 
-			UIElement settingsButton = ((Button)((new Button("Settings"))
+			UIElement settingsButton = ((SimpleButton)((new SimpleButton("Settings"))
 				.setPosition(5, 5, Unit.PX)
 				.setDimentions(256, 64, Unit.PX)))
 				.setCallback(settings);
