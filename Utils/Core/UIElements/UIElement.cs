@@ -42,7 +42,7 @@
         {
             // Defaults
             whiteRectangle = DebugUtility.getSolidTexture(Color.White, 1, 1);
-            defaultFont = ContentUtility.getAndSave<SpriteFont>("fonts/file");
+            defaultFont = ContentUtility.get<SpriteFont>("fonts/file");
         }
         public UIElement()
         {

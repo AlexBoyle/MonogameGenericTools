@@ -4,7 +4,7 @@
     {
         public ImageElement(String imageName)
         {
-            texture = ContentUtility.getAndSave<Texture2D>(imageName);
+            texture = ContentUtility.get<Texture2D>(imageName);
         }
         public ImageElement(Texture2D texture)
         {

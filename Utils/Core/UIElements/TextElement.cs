@@ -11,7 +11,7 @@
         {
             this.color = Color.Black;
             this.text = text;
-            font = ContentUtility.getAndSave<SpriteFont>(fontName);
+            font = ContentUtility.get<SpriteFont>(fontName);
             aproxTextRenderSize = font.MeasureString(text);
             // This can be expensive, so we may need a diffrent approach for constently updating text
             // or we just never update this, or only force update it
