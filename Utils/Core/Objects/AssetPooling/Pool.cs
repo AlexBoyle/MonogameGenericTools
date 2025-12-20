@@ -1,10 +1,17 @@
-﻿using System.Collections.Generic;
-
-namespace Utils.Core.Objects.AssetPooling {
+﻿namespace MonoTools.Core.Objects.AssetPooling {
 	public class Pool<T> where T : Poolable, new() {
 		private Stack<T> inactive = new Stack<T>();
 		private Dictionary<int, T> active = new Dictionary<int, T>();
 		public Pool() { }
+		public Pool(int initalNumberOfObjects) {
+			addToPool(initalNumberOfObjects);
+		}
+
+		public void addToPool(int numObjects) {
+			for (int i = 0; i < numObjects; i++) {
+				inactive.Push(new T());
+			}
+		}
 		public virtual T getForUse() {
 			T output;
 			if (inactive.Count == 0) {

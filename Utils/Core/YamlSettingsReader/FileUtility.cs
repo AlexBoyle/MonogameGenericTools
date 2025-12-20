@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using YamlDotNet.Serialization;
 
-namespace Utils.Core.YamlSettingsReader {
+namespace MonoTools.Core.YamlSettingsReader {
 	public static class FileUtility {
 
 		public static Dictionary<object, object> readYamlFile(string fileName) {

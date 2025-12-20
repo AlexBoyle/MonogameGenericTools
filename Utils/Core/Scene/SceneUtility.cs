@@ -1,6 +1,6 @@
-﻿namespace Utils.Core.Scene {
+﻿namespace MonoTools.Core.Scene {
 	using Microsoft.Xna.Framework;
-	using Utils.Core.GlobalUtilities;
+	using MonoTools.Core.GlobalUtilities;
 	using System;
 	using System.Collections.Generic;
 
@@ -22,7 +22,7 @@
 				if (scene.isInitalScene) {
 					setActive(scene.name);
 				}
-				Debug.WriteLine("Found and added Scene=\"" + scene.name + "\"");
+				LoggingUtil.info("Found and added Scene=\"" + scene.name + "\"");
 			}
 
 		}
@@ -33,7 +33,7 @@
 					scenes.Add(scene.name, scene);
 				}
 				else {
-					Debug.WriteLine("Failed to add scene name=" + scene.name);
+					LoggingUtil.warn("Failed to add scene name=" + scene.name);
 				}
 			}
 		}

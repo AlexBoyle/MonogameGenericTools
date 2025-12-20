@@ -1,4 +1,4 @@
-﻿namespace Utils.Core.UIElements
+﻿namespace MonoTools.Core.UIElements
 {
     public class SetImageButton : ButtonBase
     {

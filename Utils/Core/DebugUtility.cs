@@ -1,6 +1,6 @@
-﻿namespace Utils.Core
+﻿namespace MonoTools.Core
 {
-    using Utils.Core.GlobalUtilities;
+    using MonoTools.Core.GlobalUtilities;
 
     public static class DebugUtility
     {

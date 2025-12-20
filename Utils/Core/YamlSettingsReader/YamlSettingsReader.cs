@@ -1,5 +1,5 @@
-﻿namespace Utils.Core.YamlSettingsReader {
-	using Utils.Core.GlobalUtilities;
+﻿namespace MonoTools.Core.YamlSettingsReader {
+	using MonoTools.Core.GlobalUtilities;
 	using System;
 	using System.Collections.Generic;
 
@@ -31,12 +31,12 @@
 					yamlSetting.setData(data);
 					settings.Add(yamlSetting.getKey(), yamlSetting);
 				}
-				LoggingUtil.logWithTimeTaken($"Finished loading file={filename}", watch);
+				LoggingUtil.info($"Finished loading file={filename}");
 			}
 			catch (Exception ex) {
-				LoggingUtil.logWithTimeTaken($"Failed loading file={filename}", watch);
-				Debug.WriteLine(ex.Message);
-				Debug.WriteLine(ex.StackTrace.ToString());
+				LoggingUtil.info($"Failed loading file={filename}");
+				LoggingUtil.info(ex.Message);
+				LoggingUtil.info(ex.StackTrace.ToString());
 			}
 			return null;
 		}
@@ -46,7 +46,14 @@
 		}
 
 		public T get(string key) {
-			return settings[key.ToLower()];
+			return settings.GetValueOrDefault(key.ToLower(), null);
+		}
+		public List<T> getAllValues() {
+			return settings.Values.ToList();
+		}
+
+		public List<string> getAllKeys() {
+			return settings.Keys.ToList();
 		}
 	}
 }

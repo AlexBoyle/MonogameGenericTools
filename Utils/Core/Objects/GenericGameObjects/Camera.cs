@@ -1,5 +1,5 @@
-﻿namespace Utils.Core.Objects.GenericGameObjects {
-	using Utils.Core.Scene;
+﻿namespace MonoTools.Core.Objects.GenericGameObjects {
+	using MonoTools.Core.Scene;
 
 	public class Camera : GameObject {
 		public Camera() {

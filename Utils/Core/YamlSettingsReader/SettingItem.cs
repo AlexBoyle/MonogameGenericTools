@@ -1,4 +1,4 @@
-﻿namespace Utils.Core.YamlSettingsReader {
+﻿namespace MonoTools.Core.YamlSettingsReader {
 	using System.Collections.Generic;
 
 	public class SettingItem {

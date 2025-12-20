@@ -1,4 +1,4 @@
-﻿namespace Utils.Core.GlobalUtilities {
+﻿namespace MonoTools.Core.GlobalUtilities {
 	using System.Collections.Generic;
 
 	public static class Flags {

@@ -1,5 +1,5 @@
-﻿namespace Utils.Core.Objects {
-	using Utils.Core.GlobalUtilities;
+﻿namespace MonoTools.Core.Objects {
+	using MonoTools.Core.GlobalUtilities;
 
 	public class TestSquare : GameObject {
 

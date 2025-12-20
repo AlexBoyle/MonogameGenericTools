@@ -1,4 +1,4 @@
-﻿namespace Utils.Core.GlobalUtilities {
+﻿namespace MonoTools.Core.GlobalUtilities {
 
 
 	public static class ObjectUtilities {
@@ -11,7 +11,7 @@
 					t => baseType.IsAssignableFrom(t)
 						&& baseType != t
 						&& !t.IsAbstract
-						&& t.GetConstructor(Type.EmptyTypes) != null
+
 				).ToList();
 
 			return output;

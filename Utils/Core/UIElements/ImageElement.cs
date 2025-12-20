@@ -1,29 +1,25 @@
-﻿namespace Utils.Core.UIElements
-{
-    public class ImageElement : UIElement
-    {
-        public ImageElement(String imageName)
-        {
-            texture = ContentUtility.get<Texture2D>(imageName);
-        }
-        public ImageElement(Texture2D texture)
-        {
-            this.texture = texture;
+﻿namespace MonoTools.Core.UIElements {
+	public class ImageElement : UIElement {
+		public ImageElement(String imageName) {
+			texture = ContentUtility.get<Texture2D>(imageName);
+		}
+		public ImageElement(Texture2D texture) {
+			this.texture = texture;
 
-        }
+		}
 
-        public override void draw(GameTime gt)
-        {
-            Globals.spriteBatch.Draw(
-                texture: texture,
-                sourceRectangle: null,
-                destinationRectangle: new(renderedPosition.ToPoint(), screenDimentionsInPixles.ToPoint()),
-                color: Color.White,
-                rotation: 0f,
-                origin: Vector2.Zero,
-                effects: SpriteEffects.None,
-                layerDepth: zIndex);
-            base.draw(gt);
-        }
-    }
+		public override void draw(GameTime gt) {
+			if (texture != null)
+				Globals.spriteBatch.Draw(
+					texture: texture,
+					sourceRectangle: null,
+					destinationRectangle: new(renderedPosition.ToPoint(), screenDimentionsInPixles.ToPoint()),
+					color: Color.White,
+					rotation: 0f,
+					origin: Vector2.Zero,
+					effects: SpriteEffects.None,
+					layerDepth: zIndex);
+			base.draw(gt);
+		}
+	}
 }

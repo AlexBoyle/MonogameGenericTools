@@ -1,4 +1,4 @@
-﻿namespace Utils.Core.Scene {
+﻿namespace MonoTools.Core.Scene {
 	public enum Status {
 		ACTIVE,
 		INACTIVE

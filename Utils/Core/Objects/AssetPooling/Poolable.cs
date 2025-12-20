@@ -1,4 +1,4 @@
-﻿namespace Utils.Core.Objects.AssetPooling {
+﻿namespace MonoTools.Core.Objects.AssetPooling {
 	using System.Collections.Generic;
 
 	public class Poolable {

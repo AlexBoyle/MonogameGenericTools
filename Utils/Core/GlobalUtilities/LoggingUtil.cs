@@ -1,38 +1,40 @@
-﻿namespace Utils.Core.GlobalUtilities
-{
-    public static class LoggingUtil
-    {
+﻿namespace MonoTools.Core.GlobalUtilities {
 
-        public static void info(string s)
-        {
-            Debug.WriteLine(s);
-        }
+	public enum LogLevel {
+		DEBG = 0,
+		INFO = 1,
+		WARN = 2,
+		ERRO = 3
+	}
 
-        public static string getTimeTaken(Stopwatch stopwatch)
-        {
-            return $" timeTaken={(stopwatch.ElapsedTicks / 10000f).ToString("000.0000")}ms";
-        }
+	public static class LoggingUtil {
 
-        public static void logWithTimeTaken(string log, Stopwatch timer)
-        {
-            Debug.WriteLine(log + getTimeTaken(timer));
+		public static LogLevel logLevel = LogLevel.INFO;
 
-        }
-        public static string getParsedGameTime(GameTime gameTime)
-        {
-            string gameTimeString = gameTime.TotalGameTime.ToString();
-            int index = gameTimeString.IndexOf(".");
-            if (index != -1)
-                return gameTimeString.Substring(0, gameTimeString.IndexOf("."));
-            return "00:00:00";
-        }
+		public static string getFormatedGlobalTime() {
+			return Globals.globalStopwatch.Elapsed.ToString("hh\\:mm\\:ss\\.ff");
+		}
 
-        public static void logWithGameTime(string log, GameTime gameTime)
-        {
-            info(
-                getParsedGameTime(gameTime) + " - " +
-                log
-            );
-        }
-    }
+		public static void debg(string s) {
+			if (logLevel >= LogLevel.DEBG)
+				Debug.WriteLine(getFormatedGlobalTime() + " [DEBG] - " + s);
+		}
+
+		public static void info(string s) {
+			if (logLevel >= LogLevel.INFO)
+				Debug.WriteLine(getFormatedGlobalTime() + " [INFO] - " + s);
+		}
+
+		public static void warn(string s) {
+			if (logLevel >= LogLevel.WARN)
+				Debug.WriteLine(getFormatedGlobalTime() + " [WARN] - " + s);
+		}
+
+		public static void err(string s) {
+			if (logLevel >= LogLevel.INFO)
+				Debug.WriteLine(getFormatedGlobalTime() + " [ERRO] - " + s);
+		}
+
+
+	}
 }
