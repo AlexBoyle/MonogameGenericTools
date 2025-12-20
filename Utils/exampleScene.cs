@@ -55,7 +55,7 @@
 			base.setup();
 		}
 		public bool newGame(GameTime gt) {
-			LoggingUtil.logWithGameTime("Button Click - NewGame", gt);
+			LoggingUtil.info("Button Click - NewGame");
 
 			//SceneUtility.setActive("GameScene");
 			//SceneUtility.setInactive(this.name);
@@ -63,7 +63,7 @@
 			return true;
 		}
 		public bool loadGame(GameTime gt) {
-			LoggingUtil.logWithGameTime("Button Click - loadGame", gt);
+			LoggingUtil.info("Button Click - loadGame");
 
 			//SceneUtility.setActive("PerlinTestScene");
 			//SceneUtility.setInactive(this.name);
@@ -71,7 +71,7 @@
 			return true;
 		}
 		public bool settings(GameTime gt) {
-			LoggingUtil.logWithGameTime("Button Click - settings", gt);
+			LoggingUtil.info("Button Click - settings");
 			return true;
 		}
 
