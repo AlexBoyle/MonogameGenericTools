@@ -6,14 +6,14 @@
 
 		static UIManager() {
 			rootElement = new UIElement();
-			rootElement.setDimentions(screenSize);
+			rootElement.setDimensions(screenSize);
 		}
 
 		public static void update(GameTime gt) {
 			Vector2 currentScreenSize = WindowUtility.getMoniterScreenSize();
 			if (screenSize != currentScreenSize) {
 				screenSize = currentScreenSize;
-				rootElement.setDimentions(screenSize);
+				rootElement.setDimensions(screenSize);
 			}
 
 
@@ -23,7 +23,7 @@
 			rootElement.draw(gt);
 		}
 
-		public static void customdraw(GameTime gt) {
+		public static void customDraw(GameTime gt) {
 			rootElement.customDraw(gt);
 		}
 

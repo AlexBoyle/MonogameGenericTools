@@ -15,6 +15,8 @@
 		private static KeyboardState currentKeyboardState;
 		private static KeyboardState lastKeyboardState;
 
+		private static readonly Queue<char> _textInputBuffer = new();
+
 
 		static InputUtility() {
 
@@ -48,6 +50,11 @@
 		 */
 		public static KeyboardState getKeyboardState() => currentKeyboardState;
 		public static KeyboardState getLastKeyboardState() => lastKeyboardState;
+
+		// Text input — fed by Window.TextInput; consumed by the focused UITextBox each frame.
+		public static void enqueueTextInput(char c)      => _textInputBuffer.Enqueue(c);
+		public static bool dequeueTextInput(out char c)  => _textInputBuffer.TryDequeue(out c);
+		public static void clearTextInput()              => _textInputBuffer.Clear();
 
 
 		public static Keys getMappedKey(Keys key) {

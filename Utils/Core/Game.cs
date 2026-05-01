@@ -1,8 +1,8 @@
 ﻿namespace MonoTools.Core {
 	public class Game : Microsoft.Xna.Framework.Game {
 		private static int sampleSeconds = 2;
-		private static int targetfps = 144;
-		private int sampelPeriod = targetfps * sampleSeconds;
+		private readonly static int targetFPS = 144;
+		private int sampelPeriod = targetFPS * sampleSeconds;
 		private int frameCount = 0;
 		public static float fps { get; private set; } = 0;
 		private Queue<long> drawTimeTaken = new();
@@ -20,7 +20,7 @@
 			var watch = new Stopwatch();
 			watch.Start();
 
-			TargetElapsedTime = TimeSpan.FromSeconds(1.0 / (float)targetfps);
+			TargetElapsedTime = TimeSpan.FromSeconds(1.0 / (float)targetFPS);
 
 			IsFixedTimeStep = true;
 
@@ -29,6 +29,7 @@
 			Debug.WriteLine("Initializing");
 			WindowUtility.initialize(this, graphicsDeviceManager);
 			Globals.initialize(this);
+			Window.TextInput += (_, e) => InputUtility.enqueueTextInput(e.Character);
 			ContentUtility.initialize(this);
 			WindowUtility.switchToFullScreen(true, false);
 			SceneUtility.intialize();
@@ -59,17 +60,20 @@
 
 			if (updateTimeTaken.Count > sampelPeriod) { updateTimeTaken.Dequeue(); }
 			if (updatesSinceLastLog >= sampelPeriod) {
-				updatesSinceLastLog = 0;
 				fps = frameCount / (float)sampleSeconds;
-				frameCount = 0;
+
 				// 60 update per second is ~16.6ms
 				/*
+				LoggingUtil.info("updatesSinceLastLog " + updatesSinceLastLog);
+				LoggingUtil.info("frameCount " + frameCount);
 				LoggingUtil.info(
 					$"avrUpdate={(updateTimeTaken.Average() / 10000f).ToString("00.000")}ms " +
 					$"avrDraw={(drawTimeTaken.Average() / 10000f).ToString("00.000")}ms " +
 					$"Fps={fps.ToString("00.0")}"
 				);
 				*/
+				updatesSinceLastLog = 0;
+				frameCount = 0;
 			}
 			updatesSinceLastLog++;
 

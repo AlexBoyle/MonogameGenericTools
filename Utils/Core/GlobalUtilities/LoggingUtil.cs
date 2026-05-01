@@ -9,7 +9,7 @@
 
 	public static class LoggingUtil {
 
-		public static LogLevel logLevel = LogLevel.INFO;
+		public static LogLevel logLevel = LogLevel.ERRO;
 
 		public static string getFormatedGlobalTime() {
 			return Globals.globalStopwatch.Elapsed.ToString("hh\\:mm\\:ss\\.ff");
