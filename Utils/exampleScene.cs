@@ -1,97 +1,82 @@
 ﻿namespace Utils {
 	public class ExampleScene : SceneBase {
-		UIElement root = new();
+		private UILoadResult _ui;
+		private Point _currentScreenSize = new();
+
+		private string _username = "";
+		private string _password = "";
+		private string _submittedUser = "";
+		private string _submittedPass = "";
+		private bool _hasSubmitted = false;
+
 		public ExampleScene() {
-			this.name = "ExampleScene";
+			this.name = "UITestScene";
 			this.isInitalScene = true;
 		}
 
 		public override void setup() {
-			root.setPosition(0, 0);
-			Point windowSize = WindowUtility.getwindowScreenSize();
-			root.setDimentions(windowSize.X, windowSize.Y);
-
-			UIElement padding = (new UIElement())
-				.setOrientation(Orientation.HORIZONTAL)
-				.setPosition(5, 5, Unit.PER)
-				.setDimentions(90, 90, Unit.PER);
-
-			UIElement left = (new Box())
-				.setPosition(0, 0, Unit.PER)
-				.setDimentions(33, 100, Unit.PER);
-			UIElement middle = (new Box())
-				.setPosition(0, 0, Unit.PER)
-				.setDimentions(34, 100, Unit.PER);
-			UIElement right = (new Box())
-				.setPosition(0, 0, Unit.PER)
-				.setDimentions(33, 100, Unit.PER)
-				.setJustify(Justify.RIGHT);
-
-			left.color = Color.Brown;
-			middle.color = Color.RosyBrown;
-			right.color = Color.SaddleBrown;
-
-			UIElement loadGameButton = ((SimpleButton)((new SimpleButton("Load Game"))
-				.setPosition(5, 5, Unit.PX)
-				.setDimentions(256, 64, Unit.PX)))
-				.setCallback(loadGame);
-
-			UIElement newGameButton = ((SimpleButton)((new SimpleButton("New Game"))
-				.setPosition(5, 5, Unit.PX)
-				.setDimentions(256, 64, Unit.PX)))
-				.setCallback(newGame);
-
-			UIElement settingsButton = ((SimpleButton)((new SimpleButton("Settings"))
-				.setPosition(5, 5, Unit.PX)
-				.setDimentions(256, 64, Unit.PX)))
-				.setCallback(settings);
-
-			padding.addElement(left).addElement(middle).addElement(right);
-			right.addElement(loadGameButton).addElement(newGameButton).addElement(settingsButton);
-			root.addElement(padding);
-
-			gameObjects.Add(root);
-
+			_currentScreenSize = WindowUtility.getwindowScreenSize();
+			buildUI();
 			base.setup();
 		}
-		public bool newGame(GameTime gt) {
-			LoggingUtil.info("Button Click - NewGame");
 
-			//SceneUtility.setActive("GameScene");
-			//SceneUtility.setInactive(this.name);
-
-			return true;
+		public override void reset() {
+			_ui = null;
+			_username = "";
+			_password = "";
+			_submittedUser = "";
+			_submittedPass = "";
+			_hasSubmitted = false;
+			gameObjects.Clear();
+			base.reset();
 		}
-		public bool loadGame(GameTime gt) {
-			LoggingUtil.info("Button Click - loadGame");
 
-			//SceneUtility.setActive("PerlinTestScene");
-			//SceneUtility.setInactive(this.name);
+		private void buildUI() {
+			var ctx = new UIContext();
 
-			return true;
+			ctx.interactions.bind("onBack", _ => {
+				//SceneUtility.setActive("MainMenuScene");
+				//SceneUtility.setInactive(this.name);
+				Globals.gameRef.Exit();
+			});
+
+			ctx.interactions.bindInput("onUsernameChange", v => _username = v);
+			ctx.interactions.bindInput("onPasswordChange", v => _password = v);
+
+			ctx.interactions.bind("onLogin", _ => {
+				_submittedUser = _username;
+				_submittedPass = _password;
+				_hasSubmitted = true;
+			});
+
+			ctx.bindText("submittedUser", () => _submittedUser);
+			ctx.bindText("submittedPass", () => _submittedPass);
+			ctx.bindVisible("hasSubmitted", () => _hasSubmitted);
+
+			_ui = UIHtmlLoader.load("testTemplate.html", ctx);
+			_ui.root.setDimensions(_currentScreenSize.X, _currentScreenSize.Y);
+			gameObjects.Add(_ui.root);
 		}
-		public bool settings(GameTime gt) {
-			LoggingUtil.info("Button Click - settings");
-			return true;
+
+		public override void update(GameTime gameTime) {
+			Point screenSize = WindowUtility.getwindowScreenSize();
+			if (!_currentScreenSize.Equals(screenSize)) {
+				_currentScreenSize = screenSize;
+				_ui.root.setDimensions(screenSize.X, screenSize.Y);
+			}
+			_ui?.update(gameTime);
+			_ui?.root.update(gameTime);
 		}
 
 		public override void draw(GameTime gameTime) {
 			Globals.spriteBatch.Begin(
 				sortMode: SpriteSortMode.BackToFront,
 				blendState: BlendState.NonPremultiplied,
-				samplerState: SamplerState.PointClamp
+				samplerState: SamplerState.LinearClamp
 			);
-			foreach (GameObject gameObject in gameObjects) {
-				gameObject.draw(gameTime);
-			}
+			_ui?.root.draw(gameTime);
 			Globals.spriteBatch.End();
-		}
-
-		public override void update(GameTime gameTime) {
-			Point a = WindowUtility.getwindowScreenSize();
-			root.setDimentions(a.X, a.Y);//ToDo: make better
-
-			base.update(gameTime);
+			_ui?.root.customDraw(gameTime);
 		}
 	}
 }

@@ -1,0 +1,24 @@
+<div class="test-page">
+    <link rel="stylesheet" href="styles/testTemplate.css" />
+    <div class="test-header">
+        <label class="test-title">UI Test</label>
+        <button class="back-btn" onclick="{onBack}">Back</button>
+    </div>
+    <div class="test-body">
+        <div class="login-page">
+            <p class="login-header">Login</p>
+            <div class="login-body">
+                <p class="field-label">Email or Username</p>
+                <input class="field-input" onchange="{onUsernameChange}" />
+                <p class="field-label">Password</p>
+                <input class="field-input" onchange="{onPasswordChange}" />
+                <button class="login-btn" onclick="{onLogin}">Log In</button>
+            </div>
+        </div>
+        <div class="login-result" visible="{hasSubmitted}">
+            <p class="result-heading">Submitted Values</p>
+            <p class="result-text">Username: {submittedUser}</p>
+            <p class="result-text">Password: {submittedPass}</p>
+        </div>
+    </div>
+</div>

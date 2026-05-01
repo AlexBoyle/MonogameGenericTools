@@ -27,3 +27,9 @@
 /processorParam:TextureFormat=Compressed
 /build:fonts/Vipnagorgialla.spritefont
 
+#begin UI/styles/testTemplate.css
+/copy:UI/styles/testTemplate.css
+
+#begin UI/testTemplate.html
+/copy:UI/testTemplate.html
+
